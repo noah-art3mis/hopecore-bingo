@@ -16,7 +16,7 @@ Checked 6 October 2026. This project uses “hopecore” in the user's sense: fu
 
 ### The user's academic example
 
-[Systemic Futures: Integrating Critical Speculation and Systemic Design Pragmatism](https://doi.org/10.1145/3800645.3812901), Wong and colleagues (2026). The abstract supplied by the user is retained as the app's example. Its distinguishing terms include systemic, speculative, participatory, sociotechnical, grounded and critical. It describes a specific design process and case study; matching vocabulary is not a quality judgment.
+[Systemic Futures: Integrating Critical Speculation and Systemic Design Pragmatism](https://doi.org/10.1145/3800645.3812901), Wong and colleagues (2026). The abstract supplied by the user informed the initial version; the app now uses a fictional example and includes no publication references. Its distinguishing terms include systemic, speculative, participatory, sociotechnical, grounded and critical. It describes a specific design process and case study; matching vocabulary is not a quality judgment.
 
 ### The first downloaded image
 

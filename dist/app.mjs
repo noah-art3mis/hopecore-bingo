@@ -1,5 +1,7 @@
 import {analyse,card,winningLines} from './engine.mjs';
 import {generate,registers,themes,densities} from './generator.mjs';
+import {shareResult} from './share-result.mjs';
+import {drawShareCard} from './share-card.mjs';
 import {example} from './vocabulary.mjs';
 const $ = id => document.getElementById(id);
 for (const [id, choices] of Object.entries({register:Object.entries(registers).map(([value,item])=>[value,item.label]),theme:[['mixed','Surprise me'],...Object.entries(themes).map(([value,item])=>[value,item.label])],density:Object.entries(densities)})) {
@@ -8,6 +10,7 @@ for (const [id, choices] of Object.entries({register:Object.entries(registers).m
   }
 }
 $('density').value='fluent';
+let prizeId=null, shareFile=null, shareUrl=null, shareModel=null;
 let mode='generate', result=analyse(''), selected=null, output='';
 
 function inspect(index) {
@@ -31,13 +34,12 @@ function inspect(index) {
     }
     if (match.evidence.length>3) panel.append(`And ${match.evidence.length-3} more mentions. `);
   } else panel.append('No matching language in this text. ');
-  const link=document.createElement('a');link.href=trope.source;link.textContent='Explore the reference ↗';link.target='_blank';link.rel='noreferrer';panel.append(link);
 }
 
 function highlightLine(id) {
   const line=result.lines.find(line=>line.id===id);
   for (const square of $('board').children) square.classList.toggle('line-member',Boolean(line?.indices.includes(Number(square.dataset.index))));
-  for (const badge of $('earned-lines').children) badge.setAttribute('aria-pressed',badge.dataset.line===id);
+
 }
 
 function inspectLine(id) {
@@ -62,18 +64,8 @@ function inspectLine(id) {
 }
 
 function renderLineNames(matched) {
-  const badges=result.lines.map(line=>{
-    const button=document.createElement('button');button.className='line-badge';
-    button.textContent=line.name;button.dataset.line=line.id;
-    button.setAttribute('aria-pressed','false');button.setAttribute('aria-controls','evidence');
-    button.addEventListener('click',()=>{
-      if (selected?.kind==='line' && selected.id===line.id) inspectLine(null);
-      else inspectLine(line.id);
-    });
-    return button;
-  });
-  $('earned-lines').replaceChildren(...badges);
-  $('earned-lines').hidden=!badges.length;
+  if (!result.lines.some(line=>line.id===prizeId)) prizeId=result.lines[0]?.id??null;
+  renderPrize();
   $('line-guide-list').replaceChildren(...winningLines.map(line=>{
     const item=document.createElement('li');
     const heading=document.createElement('div');
@@ -88,6 +80,46 @@ function renderLineNames(matched) {
     return item;
   }));
 }
+
+function renderPrize() {
+  const index=result.lines.findIndex(line=>line.id===prizeId);
+  $('earned-lines').hidden=index<0;
+  if(index<0)return;
+  $('prize-name').textContent=result.lines[index].name;
+  $('prize-count').textContent=`${index+1} / ${result.lines.length}`;
+  for(const id of ['previous-prize','next-prize']) $(id).disabled=result.lines.length<2;
+}
+for(const [id,step] of [['previous-prize',-1],['next-prize',1]]) $(id).addEventListener('click',()=>{
+  const index=result.lines.findIndex(line=>line.id===prizeId);
+  prizeId=result.lines[(index+step+result.lines.length)%result.lines.length].id;
+  renderPrize();inspectLine(prizeId);
+});
+$('inspect-prize').addEventListener('click',()=>inspectLine(prizeId));
+$('share-prize').addEventListener('click',()=>{
+  shareModel=shareResult(result,prizeId);
+  drawShareCard($('share-preview'),shareModel);
+  $('share-preview').setAttribute('aria-label',`${shareModel.name}. Hopecore bingo with five winning squares highlighted.`);
+  $('share-caption').textContent=shareModel.text;
+  $('share-notice').textContent='Preparing image…';
+  $('download-share').hidden=true;$('native-share').hidden=true;
+  $('share-dialog').showModal();
+  $('share-preview').toBlob(blob=>{
+    if(!blob){$('share-notice').textContent='Image could not be created. You can still copy the caption.';return;}
+    if(shareUrl)URL.revokeObjectURL(shareUrl);
+    shareUrl=URL.createObjectURL(blob);shareFile=new File([blob],'carem-ipsum-bingo.png',{type:'image/png'});
+    $('download-share').href=shareUrl;$('download-share').hidden=false;
+    $('native-share').hidden=!(navigator.canShare?.({files:[shareFile]}) && navigator.share);
+    $('share-notice').textContent='';
+  },'image/png');
+});
+$('native-share').addEventListener('click',async()=>{
+  try{await navigator.share({files:[shareFile],title:shareModel.name,text:shareModel.text});}
+  catch(error){if(error.name!=='AbortError')$('share-notice').textContent='Sharing is unavailable here. Save the image to share it.';}
+});
+$('copy-post').addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(shareModel.text);$('share-notice').textContent='Caption copied.';}
+  catch{$('share-notice').textContent='Select the caption above and copy it manually.';}
+});
 
 function celebrate() {
   $('celebration').replaceChildren();
@@ -173,7 +205,7 @@ $('check').addEventListener('click',()=>{
 });
 $('example').addEventListener('click',()=>{
   clearTimeout(timer);$('input').value=example;render(example);
-  $('notice').textContent='Loaded: Systemic Futures, Wong et al. (2026). ';
+  $('notice').textContent='Fictional example loaded.';
 });
 $('clear').addEventListener('click',()=>{clearTimeout(timer);$('input').value='';render('');$('notice').textContent='Cleared.';$('input').focus();});
 regenerate();$('notice').textContent='';

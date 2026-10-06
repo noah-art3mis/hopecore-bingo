@@ -27,8 +27,16 @@ The generator is an original compositional grammar. It selects a consistent worl
 - [Expanded sources, including the Monash lead](research/expanded-sources.md)
 - [Lipsum mechanisms and design decisions](research/lipsum-mechanics.md)
 
-The term hopecore is this project's interpretation of the register. The sources make distinct arguments; matching their vocabulary does not assess research quality. The example abstract was supplied by the user and links to its publication. Private Obsidian notes and downloaded screenshots are not included.
+The term hopecore is this project's interpretation of the register. The sources make distinct arguments; matching their vocabulary does not assess research quality. The built-in example is fictional. The app includes no author attributions or outbound research links. Private Obsidian notes and downloaded screenshots are not included.
 
 ## Structure
 
-`dist/vocabulary.mjs` owns trope labels, matching patterns and source links. `dist/engine.mjs` owns analysis and line detection. `dist/bingo-card.mjs` owns the card arrangement and names for every winning line. `dist/generator.mjs` owns composition; `dist/generator-corpus.mjs` holds the original grammar and themed vocabulary. `dist/app.mjs` connects browser controls to these operations. Static hosting uses `dist/` and the Sites identity in `.openai/hosting.json`.
+`dist/vocabulary.mjs` owns trope labels and matching patterns. `dist/engine.mjs` owns analysis and line detection. `dist/bingo-card.mjs` owns the card arrangement and names for every winning line. `dist/generator.mjs` owns composition; `dist/generator-corpus.mjs` holds the original grammar and themed vocabulary. `dist/app.mjs` connects browser controls to these operations. Static hosting uses `dist/` and the Sites identity in `.openai/hosting.json`.
+
+## Sharing
+
+Completed bingos have a large prize reveal and navigation between wins. Share this bingo opens a PNG preview, image download, copyable caption, and native file sharing where supported. The exported model contains only the controlled prize name and board state, never pasted text or evidence.
+
+## Personal Render deployment
+
+`render.yaml` defines a static site serving only `dist/`, with `npm test` as the build check and automatic deployments disabled. No server, database, secrets, or paid compute plan is required. Before applying it, verify the authenticated account and personal workspace ID; never apply it in a work workspace. The saved CLI login expired during preparation, so no Render resource has been created. A Git source destination and the personal workspace still need to be confirmed.
