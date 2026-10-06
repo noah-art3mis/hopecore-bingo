@@ -1,0 +1,8 @@
+# Apply only in the verified personal Render workspace.
+services:
+  - type: web
+    name: carem-ipsum
+    runtime: static
+    buildCommand: npm test
+    staticPublishPath: ./dist
+    autoDeployTrigger: off

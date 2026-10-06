@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Generate speculative, participatory, more-than-human lorem ipsum. Paste a text and see its vocabulary light up a hopecore bingo card.">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon.png">
+<link rel="icon" type="image/svg+xml" href="/assets/icon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#193b35">
+<link rel="canonical" href="https://carem-ipsum.onrender.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Carem Ipsum">
+<meta property="og:title" content="Carem Ipsum – Hopecore Bingo">
+<meta property="og:description" content="Generate speculative, participatory, more-than-human lorem ipsum. Paste your own text and play hopecore bingo.">
+<meta property="og:url" content="https://carem-ipsum.onrender.com/">
+<meta property="og:image" content="https://carem-ipsum.onrender.com/assets/social-preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Possible worlds. Hopecore Bingo, with a marked bingo grid on a peach and pink gradient. Carem Ipsum.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Carem Ipsum – Hopecore Bingo">
+<meta name="twitter:description" content="Make some hopecore. Or find it in your own text.">
+<meta name="twitter:image" content="https://carem-ipsum.onrender.com/assets/social-preview.png">
+<meta name="twitter:image:alt" content="Possible worlds. Hopecore Bingo, with a marked bingo grid on a peach and pink gradient. Carem Ipsum.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Carem Ipsum – Hopecore Bingo</title>
+<link rel="stylesheet" href="style.css"><script type="module" src="app.mjs"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header><a class="wordmark" href="#">carem ipsum</a></header>
+<main id="main" tabindex="-1">
+<noscript><p>Enable JavaScript to generate text and check your bingo card. Pasted text is processed in your browser.</p></noscript>
+<section class="intro"><div><h1>Co-creating<br><em>possible worlds.</em></h1></div><div class="seal" aria-hidden="true"><span>100%<br>MORE THAN<br><b>HUMAN</b></span></div></section>
+<section class="workspace" aria-label="Hopecore generator and bingo checker">
+<div class="writing">
+<div class="tabs" role="tablist" aria-label="Text mode"><button id="generate-tab" role="tab" aria-selected="true" aria-controls="generate-panel">Make some hopecore</button><button id="check-tab" role="tab" aria-selected="false" aria-controls="check-panel" tabindex="-1">Check a text</button></div>
+<section id="generate-panel" role="tabpanel" aria-labelledby="generate-tab">
+<div class="controls"><label>The occasion<select id="register"></select></label><label>Paragraphs<select id="paragraphs"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select></label></div>
+<div class="controls world-controls"><label>The world<select id="theme"></select></label><label>Jargon level<select id="density"></select></label></div>
+<div id="generated" class="generated" tabindex="0" role="region" aria-label="Generated hopecore"></div>
+<div class="actions"><button id="generate" class="primary">Reimagine it ↗</button><button id="copy" class="secondary">Copy text</button></div>
+
+</section>
+<section id="check-panel" role="tabpanel" aria-labelledby="check-tab" hidden>
+<label class="input-label" for="input">Paste an abstract, manifesto, workshop invitation…</label><textarea id="input" maxlength="40000" placeholder="We invite you to co-create more-than-human futures through embodied practices of collective care…" spellcheck="false"></textarea>
+<div class="actions"><button id="check" class="primary">Check my text ↗</button><button id="example" class="secondary">Try an example</button><button id="clear" class="text-button">Clear</button></div>
+<p class="small">Up to 40,000 characters. Your text stays in this browser.</p>
+</section>
+<div id="notice" role="status" class="notice"></div>
+
+</div>
+<div class="bingo-wrap">
+<div class="card-heading"><h2>HOPECORE<br><span>BINGO</span></h2><div class="counter"><strong id="count">0</strong><span>/ 24 tropes</span></div></div>
+<div id="earned-lines" class="prize" hidden>
+<p class="prize-kicker">Bingo achieved</p><h3 id="prize-name" aria-live="polite" aria-atomic="true"></h3>
+<div class="prize-navigation"><button id="previous-prize" aria-label="Previous prize">←</button><span id="prize-count"></span><button id="next-prize" aria-label="Next prize">→</button></div>
+<div class="actions"><button id="share-prize" class="primary">Share this bingo ↗</button><button id="inspect-prize" class="secondary">See the combination</button></div>
+</div>
+<div class="bingo-letters" aria-hidden="true"><span>B</span><span>I</span><span>N</span><span>G</span><span>O</span></div>
+<div id="board" class="board" aria-label="Hopecore bingo card"></div>
+<div class="card-footer"><span id="bingo-status" role="status">The future is unmarked.</span><span>Click a square for receipts ↗</span></div>
+<section class="named-lines" aria-label="Named bingos">
+<details class="line-guide"><summary>All 12 named lines</summary><ul id="line-guide-list"></ul></details>
+</section>
+<div id="evidence" class="evidence" aria-live="polite"><p>Select a square to inspect its language.</p></div>
+</div>
+</section>
+</main>
+<footer class="related">
+<a class="related-project" href="https://prophetic-strategies-web.onrender.com/" target="_blank" rel="noopener noreferrer"><span><small>Another project</small><strong>Prophetic Strategies</strong></span><span class="project-arrow" aria-hidden="true">↗</span></a>
+<div class="footer-links"><span>By Gustavo Costa</span><nav aria-label="Find Gustavo online"><a href="https://simulacro.cv/" target="_blank" rel="noopener noreferrer">simulacro.cv ↗</a><a href="https://simulacro.tech/" target="_blank" rel="noopener noreferrer">simulacro.tech ↗</a><a href="https://github.com/noah-art3mis" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://bsky.app/profile/simulacro.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky ↗</a></nav></div>
+</footer>
+
+<dialog id="share-dialog" aria-labelledby="share-heading">
+<form method="dialog"><button class="secondary" aria-label="Close sharing">Close ×</button></form>
+<h2 id="share-heading">Share your bingo</h2><canvas id="share-preview" role="img" aria-label="Your bingo share image"></canvas>
+<div class="actions"><button id="native-share" class="primary" hidden>Share image ↗</button><a id="download-share" class="secondary" download="carem-ipsum-bingo.png">Save image</a><button id="copy-post" class="secondary">Copy caption</button></div>
+<p id="share-caption"></p><p id="share-notice" role="status"></p>
+</dialog>
+<div id="celebration" aria-hidden="true"></div>
+</body></html>

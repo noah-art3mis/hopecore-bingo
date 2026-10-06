@@ -1,0 +1,166 @@
+// Original parody vocabulary; source influences are recorded in research/expanded-sources.md.
+export const themes = {
+  futures: {
+    label:'Futures lab',
+    settings:['a neighbourhood futures lab','a participatory design studio','a civic imagination assembly','a community-led foresight programme','a speculative architecture residency','an experimental policy workshop'],
+    subjects:[['shared visions','collective imaginaries'],['possible futures','plural sociotechnical futures'],['local knowledge','situated ways of knowing'],['public choices','participatory infrastructures of possibility'],['unanswered questions','emergent horizons of inquiry'],['everyday hopes','collective imaginative agency'],['community stories','relational narratives of becoming'],['alternative plans','counter-hegemonic future imaginaries']],
+    methods:[['scenario workshops','participatory scenario weaving'],['design experiments','critical speculative probes'],['group reflection','collective sensemaking'],['mapping exercises','multiscalar systems mapping'],['story circles','futuring through speculative fabulation'],['listening sessions','embodied practices of deep listening'],['storymaking workshops','co-creative rehearsals of possible worlds'],['shared drawings','collaborative cartographies of emergence']],
+    outcomes:[['shared decisions','participatory agency'],['room to experiment','infrastructures of possibility'],['longer perspectives','plural temporal horizons'],['public involvement','collective capacities for worlding'],['different priorities','transformative orientations'],['shared understanding','relational forms of sensemaking']],
+    tensions:['prediction and possibility','institutional timelines and lived experience','what can be measured and what can be imagined','expertise and participation','present constraints and desired futures','public hopes and private roadmaps'],
+    objects:['a map with no agreed legend','a prototype from a future that never arrived','an unfinished timeline','a postcard addressed to a possible city','a model of a public square','a collection of unanswered questions'],
+  },
+  ecology: {
+    label:'More-than-human',
+    settings:['a riverside field station','a multispecies garden','a postnatural observatory','a former industrial wetland','a community soil laboratory','an urban forest school'],
+    subjects:[['soil relationships','multispecies soil entanglements'],['river life','more-than-human river kinships'],['shared habitats','relational ecologies of cohabitation'],['seasonal rhythms','plural ecological temporalities'],['human dependencies','postnatural webs of interdependence'],['urban wildlife','situated multispecies communities'],['living materials','regenerative material ecologies'],['local landscapes','affective geographies of belonging']],
+    methods:[['field walks','embodied practices of ecological noticing'],['listening exercises','attunement to sonic ecologies'],['soil studies','speculative soil encounters'],['seasonal observation','situated temporal inquiry'],['shared gardening','collective practices of cultivation'],['material experiments','postnatural material fabulation'],['habitat mapping','relational multispecies cartography'],['river storytelling','more-than-human narrative inquiry']],
+    outcomes:[['shared survival','multispecies flourishing'],['ecological care','regenerative ecologies of care'],['mutual responsibility','relational response-ability'],['room for other species','more-than-human possibilities'],['closer attention','embodied ecological attunement'],['lasting relationships','interspecies solidarities']],
+    tensions:['cultivation and control','human schedules and seasonal time','conservation and cohabitation','care and extraction','the living and the manufactured','ecological loss and collective responsibility'],
+    objects:['a handful of borrowed soil','a weathered seed packet','a recording of a river at night','a mycelial fragment','a stone that refuses interpretation','a specimen with an uncertain name'],
+  },
+  commons: {
+    label:'Commons & repair',
+    settings:['a neighbourhood repair café','a self-organised learning space','a community land assembly','a shared tool library','a cooperative housing workshop','a former factory held in common'],
+    subjects:[['shared resources','infrastructures of commoning'],['repair skills','situated practices of repair'],['mutual support','collective ecologies of care'],['local decisions','pluriversal forms of self-governance'],['everyday maintenance','relational infrastructures of maintenance'],['neighbourhood ties','place-based solidarities'],['shared learning','emergent pedagogies of the commons'],['collective ownership','participatory economies of belonging']],
+    methods:[['repair sessions','embodied inquiry through repair'],['shared meals','convivial practices of collective care'],['neighbourhood walks','situated cartographies of commoning'],['public assemblies','participatory governance rehearsals'],['skill exchanges','reciprocal pedagogies of interdependence'],['oral histories','collective memory work'],['resource mapping','relational mapping of shared capacities'],['open workshops','prefigurative learning encounters']],
+    outcomes:[['shared responsibility','collective stewardship'],['lasting support','infrastructures of solidarity'],['fairer decisions','participatory forms of justice'],['less waste','regenerative material relations'],['community autonomy','pluriversal self-determination'],['time for maintenance','ecologies of ongoing repair']],
+    tensions:['ownership and belonging','access and responsibility','maintenance and innovation','autonomy and interdependence','paid work and invisible care','institutional funding and collective self-determination'],
+    objects:['a repaired chair','a key to a shared room','a ledger of uncounted labour','a borrowed tool','a recipe annotated by three neighbours','a banner still being stitched'],
+  },
+};
+
+export const registers = {
+  academic: {label:'An academic abstract', stages:[
+    [
+      'How might {subject} reshape our understanding of {outcome}?',
+      'This inquiry approaches {subject} through the unresolved tension between {tension}.',
+      'At {setting}, questions of {subject} become questions of {outcome}.',
+      'Recent debates about {subject} leave the relationship between {tension} unsettled.',
+      'Taking {subject} as a point of departure, we examine the conditions for {outcome}.',
+      'The promise of {outcome} invites renewed attention to {subject}.',
+    ],[
+      'Drawing on {method} and {otherMethod}, we develop a situated account of this relationship.',
+      'Our approach combines {method} with {otherMethod}, treating participation as an ongoing negotiation.',
+      'We bring {method} into dialogue with {otherMethod} to make competing assumptions visible.',
+      'Through {method}, the inquiry traces how these commitments take shape in everyday encounters.',
+      'The research moves between {method} and {otherMethod}, holding different scales of experience together.',
+      'A sequence of {method} opens the question to forms of knowledge that formal models tend to overlook.',
+    ],[
+      'Rather than resolve the tension between {tension}, the framework makes it available for collective reflection.',
+      'The resulting account reframes {subject} as a practice whose consequences remain open to negotiation.',
+      'Attention shifts from a singular preferred future to the conditions under which alternatives can be sustained.',
+      'This movement unsettles the assumption that participation necessarily produces agreement.',
+      'The contribution lies in making room for disagreement without abandoning the possibility of shared action.',
+      'What emerges is a provisional vocabulary for navigating {tension} without collapsing their differences.',
+    ],[
+      'We offer this approach as an invitation to cultivate {outcome} across research and practice.',
+      'These reflections position {outcome} as a collective capacity that must be continually renewed.',
+      'The paper contributes a relational orientation to {outcome}, alongside questions for future participatory inquiry.',
+      'Further work will examine how {outcome} can endure beyond the temporary space of the intervention.',
+      'The discussion connects these methodological choices to the wider politics of {outcome}.',
+      'Our contribution is a framework for remaining accountable to {outcome} as conditions change.',
+    ],
+  ]},
+  workshop:{label:'A workshop invitation',stages:[
+    [
+      'Join us at {setting} to explore what {subject} might make possible.',
+      'What becomes available when we make time for {subject}?',
+      'Bring your curiosity to {setting}, where we will begin with {subject}.',
+      'Together, we will ask how {subject} might open space for {outcome}.',
+      'An invitation to pause: let us approach {subject} from somewhere other than certainty.',
+      'For this gathering, {setting} becomes a place to practise {outcome}.',
+    ],[
+      'Through {method} and {otherMethod}, we will listen for what has not yet found a shared language.',
+      'We will move between {method}, informal conversation and moments of collective reflection.',
+      'The session begins with {method} and leaves space for participants to redirect the inquiry.',
+      'Working with {method}, small groups will trace the tension between {tension}.',
+      'Expect {method}, followed by {otherMethod} and a generous interval for not knowing.',
+      'Our shared practice of {method} will be shaped by the experiences people bring into the room.',
+    ],[
+      'Please bring {object}, or a story about something you are learning to care for.',
+      'We will use {object} as a starting point for imagining how things might be otherwise.',
+      'There will be room for unfinished thoughts, contested meanings and {object}.',
+      'A small encounter with {object} will help us notice whose perspectives are missing.',
+      'You are invited to sit with {object} before deciding what it means.',
+      'The materials include {object}; the most important questions remain yours to bring.',
+    ],[
+      'Leave with a shared vocabulary for {outcome}, and permission to keep it provisional.',
+      'No prior experience is required, though a willingness to reconsider {subject} may be useful.',
+      'The invitation is to carry {outcome} back into the places where everyday decisions happen.',
+      'We will close by asking what it would take to sustain {outcome} after the workshop.',
+      'Together, we will assemble a small collection of possibilities for {outcome}.',
+      'Tea will be available; consensus is not a prerequisite for {outcome}.',
+    ],
+  ]},
+  manifesto:{label:'A collective manifesto',stages:[
+    [
+      'We begin with {subject}, and with the conviction that {outcome} can be practised here.',
+      'Let {subject} become a commitment we make to one another.',
+      'Our invitation is simple: make room for {outcome}.',
+      'Another way of living begins wherever people take {subject} seriously.',
+      'We refuse to leave {subject} at the level of aspiration.',
+      'The work of {outcome} belongs to everyone willing to remain with its difficulties.',
+    ],[
+      'At {setting}, we choose {method} as a way to begin.',
+      'We will practise {method}, share what we learn, and return to the questions we cannot settle.',
+      'Our tools are {method} and {otherMethod}; our starting point is the life already around us.',
+      'Through {method}, we commit to noticing the relationships that make this work possible.',
+      'We make time for {method}, even when the value of this work cannot be captured in a quarterly report.',
+      'Every practice of {method} asks us to reconsider who carries the work and who receives its benefits.',
+    ],[
+      'Between {tension}, we will keep a space open for negotiation.',
+      'We acknowledge the tension between {tension}, and refuse to call it someone else’s problem.',
+      'Let {object} remind us that transformation has a material life.',
+      'The tension between {tension} will not disappear because we have found a hopeful name for it.',
+      'We will remain answerable to the people and places that our visions leave outside the frame.',
+      'Our commitments must survive the awkwardness of putting them into practice.',
+    ],[
+      'This is how we begin to cultivate {outcome}: together, incompletely, and in public.',
+      'We claim the time and resources needed for {outcome}.',
+      'May {outcome} become something we can point to, share and repair.',
+      'We will measure this promise by the relationships it sustains.',
+      'The future remains open wherever people are working towards {outcome}.',
+      'We leave this declaration unfinished so that others can take part in changing it.',
+    ],
+  ]},
+  exhibition:{label:'An exhibition wall text',stages:[
+    [
+      'This exhibition gathers {subject} around the question of {outcome}.',
+      'Here, {object} becomes an invitation to encounter {subject} differently.',
+      'Across the exhibition, gestures of attention and care bring {subject} into focus.',
+      'Emerging from {setting}, this constellation of works attends to {subject}.',
+      'To enter this space is to step into the tension between {tension}.',
+      'The works assembled here ask what {outcome} might feel like before taking a settled form.',
+    ],[
+      'Through {method}, familiar materials become sites of collective speculation.',
+      'The installation draws on {method} and {otherMethod}, allowing several accounts of the same place to coexist.',
+      'A practice of {method} connects the intimate scale of an encounter to wider systems of dependence.',
+      'Developed through {method}, the work invites visitors to follow relationships rather than a single narrative.',
+      'Traces of {method} remain visible in the arrangement, resisting the appearance of a finished world.',
+      'The project extends {method} into a space where looking becomes a form of participation.',
+    ],[
+      'At its centre sits {object}, carrying histories that exceed the story told on this wall.',
+      'An encounter with {object} interrupts the promise that everything here can be explained.',
+      'The tension between {tension} is held in the space between the works.',
+      'Visitors are invited to notice {object} before moving towards an interpretation.',
+      'The arrangement leaves the relationship between {tension} deliberately unresolved.',
+      'What appears at first as a collection of objects slowly becomes a question about how to live together.',
+    ],[
+      'In this provisional landscape, a commitment to {outcome} means returning and paying attention.',
+      'The exhibition offers no final image of {outcome}; it leaves room for one to be made collectively.',
+      'Its proposition locates the possibility of {outcome} in the quality of an encounter.',
+      'What visitors carry away may be a renewed capacity for {outcome}.',
+      'These works ask us to stay a little longer with the possibility of {outcome}.',
+      'Beyond the gallery, the question of {outcome} continues in other hands.',
+    ],
+  ]},
+};
+
+export const cosmicAsides = [
+  'These entanglements invite a pluriversal reorientation of the conditions through which worlds become thinkable.',
+  'The emergent field holds space for relational becoming across human, more-than-human and not-yet-human temporalities.',
+  'Within this speculative ecology, the horizon itself becomes a participant in the process of collective worlding.',
+  'Ancestral resonances and anticipatory gestures fold into a regenerative choreography of otherwise.',
+  'The resulting assemblage composts disciplinary certainties into a living infrastructure of possibility.',
+  'Here, interdependence becomes both the method and the unfinished material of a multispecies imaginary.',
+];
