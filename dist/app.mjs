@@ -1,6 +1,13 @@
-import {analyse,generate,tropes} from './engine.mjs';
+import {analyse,tropes} from './engine.mjs';
+import {generate,registers,themes,densities} from './generator.mjs';
 import {example} from './vocabulary.mjs';
 const $ = id => document.getElementById(id);
+for (const [id, choices] of Object.entries({register:Object.entries(registers).map(([value,item])=>[value,item.label]),theme:[['mixed','Surprise me'],...Object.entries(themes).map(([value,item])=>[value,item.label])],density:Object.entries(densities)})) {
+  for (const [value,label] of choices) {
+    const option=document.createElement('option');option.value=value;option.textContent=label;$(id).append(option);
+  }
+}
+$('density').value='fluent';
 let mode='generate', result=analyse(''), selected=null, output='';
 const card=[...tropes.slice(0,12),null,...tropes.slice(12)];
 
@@ -86,17 +93,16 @@ for (const name of ['generate','check']) {
   });
 }
 function regenerate() {
-  output=generate({register:$('register').value,paragraphs:Number($('paragraphs').value)});
+  output=generate({register:$('register').value,paragraphs:Number($('paragraphs').value),theme:$('theme').value,density:$('density').value});
   $('generated').replaceChildren(...output.split('\n\n').map(text=>{
     const p=document.createElement('p');p.textContent=text;return p;
   }));
-  render(output);$('notice').textContent='A new possible text has emerged.';
+  render(output);$('notice').textContent='Generated.';
 }
 $('generate').addEventListener('click',regenerate);
-$('register').addEventListener('change',regenerate);
-$('paragraphs').addEventListener('change',regenerate);
+for (const id of ['register','paragraphs','theme','density']) $(id).addEventListener('change',regenerate);
 $('copy').addEventListener('click',async()=>{
-  try {await navigator.clipboard.writeText(output);$('notice').textContent='Copied. Go forth and co-create.';}
+  try {await navigator.clipboard.writeText(output);$('notice').textContent='Copied.';}
   catch {$('notice').textContent='Copy was unavailable. Select the generated text and copy it manually.';}
 });
 let timer;
@@ -109,11 +115,7 @@ $('check').addEventListener('click',()=>{
 });
 $('example').addEventListener('click',()=>{
   clearTimeout(timer);$('input').value=example;render(example);
-  $('notice').textContent='Loaded: Systemic Futures, Wong et al. (2026). Source in the reference shelf.';
+  $('notice').textContent='Loaded: Systemic Futures, Wong et al. (2026). ';
 });
 $('clear').addEventListener('click',()=>{clearTimeout(timer);$('input').value='';render('');$('notice').textContent='Cleared.';$('input').focus();});
-$('about').addEventListener('click',()=>{
-  const notes=$('field-notes');notes.hidden=!notes.hidden;$('about').setAttribute('aria-expanded',!notes.hidden);
-  if (!notes.hidden) notes.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
-});
 regenerate();$('notice').textContent='';

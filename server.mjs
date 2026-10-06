@@ -1,6 +1,6 @@
 import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
-const files=new Map([['/','index.html'],['/index.html','index.html'],['/style.css','style.css'],['/app.mjs','app.mjs'],['/engine.mjs','engine.mjs'],['/vocabulary.mjs','vocabulary.mjs']]);
+const files=new Map([['/','index.html'],['/index.html','index.html'],['/style.css','style.css'],['/app.mjs','app.mjs'],['/engine.mjs','engine.mjs'],['/generator.mjs','generator.mjs'],['/generator-corpus.mjs','generator-corpus.mjs'],['/vocabulary.mjs','vocabulary.mjs']]);
 const types={html:'text/html',css:'text/css',mjs:'text/javascript'};
 createServer(async(req,res)=>{
   const file=files.get(new URL(req.url,'http://localhost').pathname);

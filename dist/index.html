@@ -4,21 +4,22 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Generate speculative, participatory, more-than-human lorem ipsum. Paste a text and see its vocabulary light up a hopecore bingo card.">
 <link rel="icon" href="data:,">
-<title>Hopecore Bingo — collectively reimagining filler text</title>
+<title>Carem Ipsum – Hopecore Bingo</title>
 <link rel="stylesheet" href="style.css"><script type="module" src="app.mjs"></script>
 </head>
 <body>
-<header><a class="wordmark" href="#">hopecore<span>®* </span></a><span class="header-note">*not a registered worldview</span><button id="about" class="text-button" aria-expanded="false" aria-controls="field-notes">The reference shelf ↗</button></header>
+<header><a class="wordmark" href="#">carem ipsum</a></header>
 <main>
-<section class="intro"><div><p class="eyebrow">A GENERATOR. A DETECTOR. A COLLECTIVE SIGH.</p><h1>Another world<br>is <em>wordable.</em></h1><p class="deck">Lorem ipsum for the futures lab.<br>Generate the discourse. Or bring your own.</p></div><div class="seal" aria-hidden="true"><span>100%<br>MORE THAN<br><b>HUMAN</b></span></div></section>
+<section class="intro"><div><h1>Co-creating<br><em>possible worlds.</em></h1></div><div class="seal" aria-hidden="true"><span>100%<br>MORE THAN<br><b>HUMAN</b></span></div></section>
 <section class="workspace" aria-label="Hopecore generator and bingo checker">
 <div class="writing">
 <div class="tabs" role="tablist" aria-label="Text mode"><button id="generate-tab" role="tab" aria-selected="true" aria-controls="generate-panel">Make some hopecore</button><button id="check-tab" role="tab" aria-selected="false" aria-controls="check-panel" tabindex="-1">Check a text</button></div>
 <section id="generate-panel" role="tabpanel" aria-labelledby="generate-tab">
-<div class="controls"><label>The occasion<select id="register"><option value="academic">An academic abstract</option><option value="workshop">A workshop invitation</option></select></label><label>Paragraphs<select id="paragraphs"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select></label></div>
+<div class="controls"><label>The occasion<select id="register"></select></label><label>Paragraphs<select id="paragraphs"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select></label></div>
+<div class="controls world-controls"><label>The world<select id="theme"></select></label><label>Jargon level<select id="density"></select></label></div>
 <div id="generated" class="generated" aria-label="Generated hopecore"></div>
 <div class="actions"><button id="generate" class="primary">Reimagine it ↗</button><button id="copy" class="secondary">Copy text</button></div>
-<p class="small">Original parody, assembled locally. No grant required.</p>
+
 </section>
 <section id="check-panel" role="tabpanel" aria-labelledby="check-tab" hidden>
 <label class="input-label" for="input">Paste an abstract, manifesto, workshop invitation…</label><textarea id="input" maxlength="40000" placeholder="We invite you to co-create more-than-human futures through embodied practices of collective care…" spellcheck="false"></textarea>
@@ -26,7 +27,7 @@
 <p class="small">Up to 40,000 characters. Your text stays in this browser.</p>
 </section>
 <div id="notice" role="status" class="notice"></div>
-<details class="method"><summary>What counts as hopecore?</summary><p>This is vocabulary bingo, not a verdict on the ideas. Squares match words and related forms, including hyphen variants. A mention still counts when it is critical, ironic or negated. Click any square to see the evidence and its reference.</p><p>The centre is free. Five marked squares in a row, column or diagonal make bingo. The count measures vocabulary overlap, not meaning or quality.</p></details>
+
 </div>
 <div class="bingo-wrap">
 <div class="card-heading"><h2>HOPECORE<br><span>BINGO</span></h2><div class="counter"><strong id="count">0</strong><span>/ 24 tropes</span></div></div>
@@ -36,15 +37,7 @@
 <div id="evidence" class="evidence" aria-live="polite"><p>Select a square to inspect its language.</p></div>
 </div>
 </section>
-<section id="field-notes" class="field-notes" hidden><h2>The reference shelf</h2><p>Our reading of a recognisable register: speculative design meets futures workshops, relational thinking and ecological care. The sources have distinct arguments; the parody mixes their vocabulary.</p><div class="source-grid">
-<a href="https://dunneandraby.co.uk/content/bydandr/689/0" target="_blank" rel="noreferrer"><b>Dunne & Raby</b><span>Speculative Everything</span></a>
-<a href="https://www.dukeupress.edu/staying-with-the-trouble" target="_blank" rel="noreferrer"><b>Donna Haraway</b><span>Staying with the Trouble</span></a>
-<a href="https://www.ursulakleguin.com/the-carrier-bag-theory-of-fiction" target="_blank" rel="noreferrer"><b>Ursula K. Le Guin</b><span>The Carrier Bag Theory of Fiction</span></a>
-<a href="https://assets.press.princeton.edu/chapters/s10581.pdf" target="_blank" rel="noreferrer"><b>Anna Tsing</b><span>The Mushroom at the End of the World</span></a>
-<a href="https://dukeupress.edu/designs-for-the-pluriverse" target="_blank" rel="noreferrer"><b>Arturo Escobar</b><span>Designs for the Pluriverse</span></a>
-<a href="https://www.upress.umn.edu/9781452953472/matters-of-care/" target="_blank" rel="noreferrer"><b>María Puig de la Bellacasa</b><span>Matters of Care</span></a>
-</div><p class="small">Example abstract: <a href="https://doi.org/10.1145/3800645.3812901" target="_blank" rel="noreferrer">Systemic Futures, Wong et al. (2026)</a>. This project is an independent parody.</p></section>
 </main>
-<footer><b>HOPECORE BINGO</b><span>The future is ancestral. The copy button is functional.</span></footer>
+
 <div id="celebration" aria-hidden="true"></div>
 </body></html>

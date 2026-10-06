@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {analyse, generate, tropes, completedLines} from '../dist/engine.mjs';
+import {analyse, tropes, completedLines} from '../dist/engine.mjs';
+import {generate} from '../dist/generator.mjs';
 
 test('academic phrases mark distinct squares and retain original evidence', () => {
   const result = analyse('Speculative probes support participatory reflection on sociotechnical systems and desired futures.');
