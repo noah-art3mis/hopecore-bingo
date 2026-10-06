@@ -83,8 +83,16 @@ function renderLineNames(matched) {
 
 function renderPrize() {
   const index=result.lines.findIndex(line=>line.id===prizeId);
-  $('earned-lines').hidden=index<0;
+  const panel=$('earned-lines');
+  const changed=panel.hidden || panel.dataset.prize!==prizeId;
+  panel.hidden=index<0;
   if(index<0)return;
+  panel.dataset.prize=prizeId;
+  result.lines[index].gradient.forEach((color,i)=>panel.style.setProperty(['--prize-inner','--prize-middle','--prize-outer'][i],color));
+  if(changed && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for(const animation of panel.getAnimations()) animation.cancel();
+    panel.animate([{opacity:0,transform:'translateY(18px) scale(.97)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:550,easing:'cubic-bezier(.2,.8,.2,1)'});
+  }
   $('prize-name').textContent=result.lines[index].name;
   $('prize-count').textContent=`${index+1} / ${result.lines.length}`;
   for(const id of ['previous-prize','next-prize']) $(id).disabled=result.lines.length<2;

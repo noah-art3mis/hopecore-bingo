@@ -15,3 +15,14 @@ test('share model includes the selected win and board but never submitted text o
 test('cannot share an unearned prize',()=>{
  assert.throws(()=>shareResult(analyse(''),'row-0'),/completed/);
 });
+test('sharing preserves each earned prize gradient when switching between intersecting wins',()=>{
+ const result=analyse('futures speculative participatory co-design reimagine mushrooms embodied ancestral slow');
+ const worlds=shareResult(result,'row-0');
+ const time=shareResult(result,'column-0');
+ assert.ok(worlds.gradient);
+ assert.ok(time.gradient);
+ assert.notDeepEqual(worlds.gradient,time.gradient);
+ assert.deepEqual(worlds.gradient,result.lines.find(line=>line.id==='row-0').gradient);
+ assert.deepEqual(time.gradient,result.lines.find(line=>line.id==='column-0').gradient);
+ assert.deepEqual(shareResult(result,'row-0').gradient,worlds.gradient);
+});

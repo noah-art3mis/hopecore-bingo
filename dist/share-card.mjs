@@ -2,7 +2,7 @@ export function drawShareCard(canvas,model) {
   canvas.width=1080;canvas.height=1080;
   const ctx=canvas.getContext('2d');
   const glow=ctx.createRadialGradient(500,430,30,540,540,790);
-  glow.addColorStop(0,'#fff9df');glow.addColorStop(.55,'#f4b9c9');glow.addColorStop(1,'#f0841f');
+  glow.addColorStop(0,model.gradient[0]);glow.addColorStop(.55,model.gradient[1]);glow.addColorStop(1,model.gradient[2]);
   ctx.fillStyle=glow;ctx.fillRect(0,0,1080,1080);
   ctx.fillStyle='#193b35';ctx.font='bold 32px sans-serif';ctx.fillText('carem ipsum',64,72);
   ctx.font='22px sans-serif';ctx.fillText('HOPECORE BINGO',64,128);
