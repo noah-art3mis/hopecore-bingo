@@ -40,3 +40,9 @@ Completed bingos have a large prize reveal and navigation between wins. Share th
 ## Personal Render deployment
 
 `render.yaml` defines a static site serving only `dist/`, with `npm test` as the build check and automatic deployments disabled. No server, database, secrets, or paid compute plan is required. Before applying it, verify the authenticated account and personal workspace ID; never apply it in a work workspace. The personal account was verified as `gustavo@arcos.org.br`, workspace `tea-csptbvogph6c73b7g5u0`. Source is the public `noah-art3mis/hopecore-bingo` repository, branch `feat/hopecore-bingo`. The Render static site is `srv-db2nj36k1f9s739gqttg`, at https://carem-ipsum.onrender.com. Deploy manually from this branch; automatic deployments are disabled.
+
+## Website launch checks
+
+The canonical address is https://carem-ipsum.onrender.com/. The page includes Open Graph and large-image card metadata pointing to `dist/assets/social-preview.png` (1200 × 630); its editable artwork is `design/social-preview.svg`. Icons include the SVG bingo emblem, a 96px PNG favicon, and a 180px Apple touch icon. `robots.txt` and `sitemap.xml` advertise the homepage. `404.html` provides a noindex return-to-app page.
+
+Verification includes HTTP asset/404 integration coverage, keyboard skip navigation, tab switching, dialog Escape/focus return, mobile layout, and automated WCAG A/AA checks in the generator, checker, share dialog, and narrow-screen view. Native file-sharing support was simulated to verify the PNG payload excludes pasted text. A real phone share sheet, screen-reader listening session, and actual WhatsApp link-preview rendering remain manual checks; automated checks do not establish those results. Social clients may cache earlier previews.
