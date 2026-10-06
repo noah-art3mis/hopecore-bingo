@@ -105,7 +105,7 @@ export const registers = {
       'We will practise {method}, share what we learn, and return to the questions we cannot settle.',
       'Our tools are {method} and {otherMethod}; our starting point is the life already around us.',
       'Through {method}, we commit to noticing the relationships that make this work possible.',
-      'We make time for {method}, even when its value cannot be captured in a quarterly report.',
+      'We make time for {method}, even when the value of this work cannot be captured in a quarterly report.',
       'Every practice of {method} asks us to reconsider who carries the work and who receives its benefits.',
     ],[
       'Between {tension}, we will keep a space open for negotiation.',
@@ -119,7 +119,7 @@ export const registers = {
       'We claim the time and resources needed for {outcome}.',
       'May {outcome} become something we can point to, share and repair.',
       'We will measure this promise by the relationships it sustains.',
-      'The future remains open wherever {outcome} is already being practised.',
+      'The future remains open wherever people are working towards {outcome}.',
       'We leave this declaration unfinished so that others can take part in changing it.',
     ],
   ]},
@@ -127,10 +127,10 @@ export const registers = {
     [
       'This exhibition gathers {subject} around the question of {outcome}.',
       'Here, {object} becomes an invitation to encounter {subject} differently.',
-      'Across the exhibition, {subject} unfolds through gestures of attention and care.',
+      'Across the exhibition, gestures of attention and care bring {subject} into focus.',
       'Emerging from {setting}, this constellation of works attends to {subject}.',
       'To enter this space is to step into the tension between {tension}.',
-      'The works assembled here ask what {outcome} might feel like before it has a settled form.',
+      'The works assembled here ask what {outcome} might feel like before taking a settled form.',
     ],[
       'Through {method}, familiar materials become sites of collective speculation.',
       'The installation draws on {method} and {otherMethod}, allowing several accounts of the same place to coexist.',
@@ -146,9 +146,9 @@ export const registers = {
       'The arrangement leaves the relationship between {tension} deliberately unresolved.',
       'What appears at first as a collection of objects slowly becomes a question about how to live together.',
     ],[
-      'In this provisional landscape, {outcome} remains a practice of returning and paying attention.',
+      'In this provisional landscape, a commitment to {outcome} means returning and paying attention.',
       'The exhibition offers no final image of {outcome}; it leaves room for one to be made collectively.',
-      'Its proposition is that {outcome} begins in the quality of an encounter.',
+      'Its proposition locates the possibility of {outcome} in the quality of an encounter.',
       'What visitors carry away may be a renewed capacity for {outcome}.',
       'These works ask us to stay a little longer with the possibility of {outcome}.',
       'Beyond the gallery, the question of {outcome} continues in other hands.',

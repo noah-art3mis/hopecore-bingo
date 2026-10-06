@@ -39,3 +39,15 @@ test('seeded inputs reproduce output and invalid controls fail explicitly',()=>{
   assert.equal(generate({theme:'commons',random:()=>.2}),generate({theme:'commons',random:()=>.2}));
   for(const options of [{theme:'nope'},{density:'nope'},{paragraphs:1.5}]) assert.throws(()=>generate(options),RangeError);
 });
+
+test('plural subjects and outcomes do not inherit singular predicates',()=>{
+  const exhibition=generate({register:'exhibition',theme:'futures',density:'grounded',paragraphs:5,random:()=>0});
+  const ecology=generate({register:'exhibition',theme:'ecology',density:'grounded',paragraphs:5,random:()=>0});
+  const manifesto=generate({register:'manifesto',theme:'futures',density:'grounded',paragraphs:5,random:()=>0});
+  assert.doesNotMatch(exhibition,/shared decisions remains|longer perspectives begins/);
+  assert.doesNotMatch(ecology,/shared habitats unfolds/);
+  assert.doesNotMatch(manifesto,/different priorities is/);
+  assert.match(exhibition,/shared decisions/);
+  assert.match(ecology,/shared habitats/);
+  assert.match(manifesto,/different priorities/);
+});
