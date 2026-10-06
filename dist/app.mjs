@@ -53,7 +53,9 @@ function render(text, animate=true) {
     button.setAttribute('aria-label',`${trope?.label ?? 'Free space'}: ${hit?'marked':'unmarked'}. Show evidence.`);
     const number=document.createElement('span');number.className='number';number.textContent=String(index+1).padStart(2,'0');
     const tick=document.createElement('span');tick.className='tick';tick.textContent=hit?'✓':'';tick.setAttribute('aria-hidden','true');
-    button.append(number,tick,document.createTextNode(trope?.label ?? 'Holding space'));
+    const label=document.createElement('span');label.className='full-label';label.textContent=trope?.label ?? 'Holding space';
+    const short=document.createElement('span');short.className='short-label';short.textContent=trope?.short ?? 'Free space';
+    short.setAttribute('aria-hidden','true');button.append(number,tick,label,short);
     button.addEventListener('click',()=>inspect(index));$('board').append(button);
   });
   $('count').textContent=result.matches.length;
