@@ -1,4 +1,4 @@
-import {analyse,tropes} from './engine.mjs';
+import {analyse,card,winningLines} from './engine.mjs';
 import {generate,registers,themes,densities} from './generator.mjs';
 import {example} from './vocabulary.mjs';
 const $ = id => document.getElementById(id);
@@ -9,10 +9,10 @@ for (const [id, choices] of Object.entries({register:Object.entries(registers).m
 }
 $('density').value='fluent';
 let mode='generate', result=analyse(''), selected=null, output='';
-const card=[...tropes.slice(0,12),null,...tropes.slice(12)];
 
 function inspect(index) {
-  selected=index;
+  selected={kind:'square',index};
+  highlightLine(null);
   const panel=$('evidence'); panel.replaceChildren();
   const trope=card[index];
   const title=document.createElement('p');
@@ -34,6 +34,61 @@ function inspect(index) {
   const link=document.createElement('a');link.href=trope.source;link.textContent='Explore the reference ↗';link.target='_blank';link.rel='noreferrer';panel.append(link);
 }
 
+function highlightLine(id) {
+  const line=result.lines.find(line=>line.id===id);
+  for (const square of $('board').children) square.classList.toggle('line-member',Boolean(line?.indices.includes(Number(square.dataset.index))));
+  for (const badge of $('earned-lines').children) badge.setAttribute('aria-pressed',badge.dataset.line===id);
+}
+
+function inspectLine(id) {
+  const line=result.lines.find(line=>line.id===id);
+  if (!line) {
+    selected=null;highlightLine(null);
+    $('evidence').textContent='Select a square to inspect its language.';
+    return;
+  }
+  selected={kind:'line',id};highlightLine(id);
+  const heading=document.createElement('p');
+  const title=document.createElement('b');title.textContent=line.name;
+  heading.append(title,document.createTextNode(` · ${line.position}`));
+  const ingredients=document.createElement('div');ingredients.className='line-ingredients';
+  for (const index of line.indices) {
+    const button=document.createElement('button');button.className='ingredient';
+    button.textContent=card[index]?.short ?? 'Free space';
+    button.setAttribute('aria-label',`${card[index]?.label ?? 'Free space'}. Show evidence.`);
+    button.addEventListener('click',()=>inspect(index));ingredients.append(button);
+  }
+  $('evidence').replaceChildren(heading,ingredients);
+}
+
+function renderLineNames(matched) {
+  const badges=result.lines.map(line=>{
+    const button=document.createElement('button');button.className='line-badge';
+    button.textContent=line.name;button.dataset.line=line.id;
+    button.setAttribute('aria-pressed','false');button.setAttribute('aria-controls','evidence');
+    button.addEventListener('click',()=>{
+      if (selected?.kind==='line' && selected.id===line.id) inspectLine(null);
+      else inspectLine(line.id);
+    });
+    return button;
+  });
+  $('earned-lines').replaceChildren(...badges);
+  $('earned-lines').hidden=!badges.length;
+  $('line-guide-list').replaceChildren(...winningLines.map(line=>{
+    const item=document.createElement('li');
+    const heading=document.createElement('div');
+    const name=document.createElement('b');name.textContent=line.name;
+    const progress=document.createElement('span');
+    const count=line.indices.filter(index=>index===12||matched.has(index)).length;
+    progress.textContent=`${count}/5`;progress.setAttribute('aria-label',`${count} of 5 squares marked`);
+    heading.append(name,progress);
+    const position=document.createElement('span');position.className='line-position';position.textContent=line.position;
+    const ingredients=document.createElement('p');ingredients.textContent=line.indices.map(index=>card[index]?.short ?? 'Free space').join(' · ');
+    item.append(heading,position,ingredients);item.classList.toggle('earned',count===5);
+    return item;
+  }));
+}
+
 function celebrate() {
   $('celebration').replaceChildren();
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -50,13 +105,14 @@ function render(text, animate=true) {
   const hadBingo=result.lines.length>0;
   result=analyse(text);
   const matched=new Set(result.matches.map(item=>item.index));
-  const winning=new Set(result.lines.flat());
+  const winning=new Set(result.lines.flatMap(line=>line.indices));
   $('board').replaceChildren();
   card.forEach((trope,index)=>{
     const button=document.createElement('button');
     const hit=index===12||matched.has(index);
     button.className=`square${index===12?' free':hit?' matched':''}${winning.has(index)?' winning':''}`;
     button.style.setProperty('--order',index);
+    button.dataset.index=index;
     button.setAttribute('aria-label',`${trope?.label ?? 'Free space'}: ${hit?'marked':'unmarked'}. Show evidence.`);
     const number=document.createElement('span');number.className='number';number.textContent=String(index+1).padStart(2,'0');
     const tick=document.createElement('span');tick.className='tick';tick.textContent=hit?'✓':'';tick.setAttribute('aria-hidden','true');
@@ -67,7 +123,9 @@ function render(text, animate=true) {
   });
   $('count').textContent=result.matches.length;
   $('bingo-status').textContent=result.lines.length?`BINGO! ${result.lines.length} complete ${result.lines.length===1?'line':'lines'}.`:result.matches.length?'The discourse is taking shape.':'The future is unmarked.';
-  if (selected!==null) inspect(selected);
+  renderLineNames(matched);
+  if (selected?.kind==='square') inspect(selected.index);
+  else if (selected?.kind==='line') inspectLine(selected.id);
   if (animate && result.lines.length && !hadBingo) celebrate();
 }
 

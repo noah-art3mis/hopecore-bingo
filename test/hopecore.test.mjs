@@ -24,10 +24,10 @@ test('empty input has no matches and repeated words do not inflate square count'
 });
 
 test('bingo recognises rows, columns and diagonals, with a free centre', () => {
-  assert.deepEqual(completedLines([0,1,2,3,4]), [[0,1,2,3,4]]);
-  assert.deepEqual(completedLines([0,5,10,15,20]), [[0,5,10,15,20]]);
-  assert.deepEqual(completedLines([0,6,18,24]), [[0,6,12,18,24]]);
-  assert.deepEqual(completedLines([4,8,16,20]), [[4,8,12,16,20]]);
+  assert.deepEqual(completedLines([0,1,2,3,4]).map(line=>line.indices), [[0,1,2,3,4]]);
+  assert.deepEqual(completedLines([0,5,10,15,20]).map(line=>line.indices), [[0,5,10,15,20]]);
+  assert.deepEqual(completedLines([0,6,18,24]).map(line=>line.indices), [[0,6,12,18,24]]);
+  assert.deepEqual(completedLines([4,8,16,20]).map(line=>line.indices), [[4,8,12,16,20]]);
   assert.equal(completedLines([]).length, 0);
 });
 

@@ -1,6 +1,6 @@
 # Carem Ipsum / Hopecore Bingo
 
-A corporate-lorem-ipsum-style generator for futures-lab language, with a paste-to-check bingo card. Choose an academic abstract, workshop invitation, collective manifesto or exhibition wall text. Pick a futures-lab, more-than-human or commons-and-repair world, set the jargon level, generate one to five paragraphs and copy the result. The checker lights up 24 trope families and shows the exact text behind each match. Five squares in a row, column or diagonal make bingo, with a free centre.
+A corporate-lorem-ipsum-style generator for futures-lab language, with a paste-to-check bingo card. Choose an academic abstract, workshop invitation, collective manifesto or exhibition wall text. Pick a futures-lab, more-than-human or commons-and-repair world, set the jargon level, generate one to five paragraphs and copy the result. The checker lights up 24 trope families and shows the exact text behind each match. Five squares in a row, column or diagonal make bingo, with a free centre. All twelve winning lines have names. The card groups related themes into rows and gives each column and diagonal its own name. Completed-line badges highlight their five squares and link to the matching evidence; the expandable guide lists every line and its progress.
 
 ## Run
 
@@ -31,4 +31,4 @@ The term hopecore is this project's interpretation of the register. The sources 
 
 ## Structure
 
-`dist/vocabulary.mjs` owns trope labels, matching patterns and source links. `dist/engine.mjs` owns analysis and line detection. `dist/generator.mjs` owns composition; `dist/generator-corpus.mjs` holds the original grammar and themed vocabulary. `dist/app.mjs` connects browser controls to these operations. Static hosting uses `dist/` and the Sites identity in `.openai/hosting.json`.
+`dist/vocabulary.mjs` owns trope labels, matching patterns and source links. `dist/engine.mjs` owns analysis and line detection. `dist/bingo-card.mjs` owns the card arrangement and names for every winning line. `dist/generator.mjs` owns composition; `dist/generator-corpus.mjs` holds the original grammar and themed vocabulary. `dist/app.mjs` connects browser controls to these operations. Static hosting uses `dist/` and the Sites identity in `.openai/hosting.json`.
