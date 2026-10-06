@@ -10,7 +10,9 @@ test('share model includes the selected win and board but never submitted text o
  assert.equal(share.squares.filter(s=>s.winning).length,5);
  assert.equal(share.squares[12].marked,true);
  assert.equal(JSON.stringify(share).includes('SECRET'),false);
- assert.equal(share.text,'Possible Worlds. My hopecore bingo on Carem Ipsum.');
+ assert.equal(share.text,'I got Possible Worlds on Carem Ipsum. Find your bingo → https://carem-ipsum.onrender.com/');
+ assert.equal(share.url,'https://carem-ipsum.onrender.com/');
+ assert.equal(share.cta,'Find your bingo ↗');
 });
 test('cannot share an unearned prize',()=>{
  assert.throws(()=>shareResult(analyse(''),'row-0'),/completed/);

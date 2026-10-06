@@ -112,7 +112,7 @@ $('share-prize').addEventListener('click',()=>{
   $('download-share').hidden=true;$('native-share').hidden=true;
   $('share-dialog').showModal();
   $('share-preview').toBlob(blob=>{
-    if(!blob){$('share-notice').textContent='Image could not be created. You can still copy the caption.';return;}
+    if(!blob){$('share-notice').textContent='Image could not be created. You can still copy the post.';return;}
     if(shareUrl)URL.revokeObjectURL(shareUrl);
     shareUrl=URL.createObjectURL(blob);shareFile=new File([blob],'carem-ipsum-bingo.png',{type:'image/png'});
     $('download-share').href=shareUrl;$('download-share').hidden=false;
@@ -125,8 +125,8 @@ $('native-share').addEventListener('click',async()=>{
   catch(error){if(error.name!=='AbortError')$('share-notice').textContent='Sharing is unavailable here. Save the image to share it.';}
 });
 $('copy-post').addEventListener('click',async()=>{
-  try{await navigator.clipboard.writeText(shareModel.text);$('share-notice').textContent='Caption copied.';}
-  catch{$('share-notice').textContent='Select the caption above and copy it manually.';}
+  try{await navigator.clipboard.writeText(shareModel.text);$('share-notice').textContent='Post and link copied.';}
+  catch{$('share-notice').textContent='Select the post above and copy it manually.';}
 });
 
 function celebrate() {

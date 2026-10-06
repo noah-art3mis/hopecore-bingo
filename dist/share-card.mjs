@@ -24,7 +24,8 @@ export function drawShareCard(canvas,model) {
     }
     ctx.fillText(row,x+12,y+34+offset);
   });
-  ctx.font='24px sans-serif';ctx.fillStyle='#193b35';ctx.fillText('Co-creating possible worlds.',64,1030);
+  ctx.font='bold 28px sans-serif';ctx.fillStyle='#193b35';ctx.fillText(model.cta,64,1007);
+  ctx.font='24px sans-serif';ctx.fillText(new URL(model.url).hostname,64,1045);
   // Compact bingo-grid emblem and wordmark sign the exported image.
   ctx.fillRect(760,1006,12,12);ctx.fillRect(775,1006,12,12);
   ctx.fillRect(760,1021,12,12);ctx.fillRect(778,1024,12,12);
